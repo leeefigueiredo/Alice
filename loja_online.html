@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja Online Responsiva</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .toast-enter { transform: translateY(100%); opacity: 0; }
+        .toast-enter-active { transform: translateY(0); opacity: 1; transition: all 0.3s ease-out; }
+        .toast-exit-active { transform: translateY(100%); opacity: 0; transition: all 0.3s ease-in; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased pt-16">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer">
+                    <svg class="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    <span class="ml-2 text-xl font-bold text-gray-900">Achadinhos de Boa</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium">Início</a>
+                    <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium">Produtos</a>
+                    <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium">Categorias</a>
+                    <a href="#" class="text-gray-600 hover:text-indigo-600 font-medium">Contato</a>
+                </div>
+
+                <!-- Cart Icon -->
+                <div class="flex items-center">
+                    <button class="relative p-2 text-gray-600 hover:text-indigo-600 transition-colors focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        <span id="cart-counter" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/4 -translate-y-1/4 bg-red-600 rounded-full">0</span>
+                    </button>
+                    <!-- Mobile menu button -->
+                    <button class="md:hidden ml-4 text-gray-600 focus:outline-none">
+                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative bg-indigo-700 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
+                Encontre a melhor tecnologia
+            </h1>
+            <p class="mt-4 max-w-2xl text-xl text-indigo-200 mx-auto mb-8">
+                Produtos de alta qualidade com preços incríveis. Renove seus equipamentos hoje mesmo com as melhores ofertas do mercado.
+            </p>
+            <a href="#produtos" class="inline-block bg-white text-indigo-700 font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-gray-50 transition-colors transform hover:-translate-y-1">
+                Comprar Agora
+            </a>
+        </div>
+        <!-- Decorative background element -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-indigo-600 opacity-50 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-indigo-800 opacity-50 blur-3xl"></div>
+    </header>
+
+    <!-- Product Grid -->
+    <main id="produtos" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="flex justify-between items-center mb-10">
+            <h2 class="text-3xl font-bold text-gray-900">Produtos em Destaque</h2>
+            <a href="#" class="text-indigo-600 hover:text-indigo-800 font-medium">Ver todos &rarr;</a>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Product 1 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow duration-300 flex flex-col group">
+                <div class="relative w-full h-48 bg-gray-200 overflow-hidden">
+                    <img src="https://placehold.co/400x300/f3f4f6/4b5563?text=Headphone+Pro" alt="Headphone Pro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute top-2 right-2 bg-white px-2 py-1 text-xs font-bold text-indigo-600 rounded">NOVO</div>
+                </div>
+                <div class="p-5 flex-grow flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1">Headphone Pro sem Fio</h3>
+                        <p class="text-sm text-gray-500 mb-4 line-clamp-2">Cancelamento de ruído ativo e áudio de alta resolução para a melhor experiência musical.</p>
+                    </div>
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="text-xl font-bold text-gray-900">R$ 599,00</span>
+                        <button onclick="addToCart('Headphone Pro')" class="add-to-cart-btn bg-indigo-600 text-white p-2 rounded-full hover:bg-indigo-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow duration-300 flex flex-col group">
+                <div class="relative w-full h-48 bg-gray-200 overflow-hidden">
+                    <img src="https://placehold.co/400x300/f3f4f6/4b5563?text=Smartwatch+X" alt="Smartwatch X" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="p-5 flex-grow flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1">Smartwatch Série X</h3>
+                        <p class="text-sm text-gray-500 mb-4 line-clamp-2">Monitoramento de saúde 24h, GPS integrado e bateria com duração de até 7 dias.</p>
+                    </div>
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="text-xl font-bold text-gray-900">R$ 849,90</span>
+                        <button onclick="addToCart('Smartwatch X')" class="add-to-cart-btn bg-indigo-600 text-white p-2 rounded-full hover:bg-indigo-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow duration-300 flex flex-col group">
+                <div class="relative w-full h-48 bg-gray-200 overflow-hidden">
+                    <img src="https://placehold.co/400x300/f3f4f6/4b5563?text=Teclado+Mecânico" alt="Teclado Mecânico" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="absolute top-2 right-2 bg-red-100 text-red-600 px-2 py-1 text-xs font-bold rounded">-15%</div>
+                </div>
+                <div class="p-5 flex-grow flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1">Teclado Mecânico RGB</h3>
+                        <p class="text-sm text-gray-500 mb-4 line-clamp-2">Switches azuis, iluminação personalizável e design ergonômico para gamers.</p>
+                    </div>
+                    <div class="flex items-center justify-between mt-auto">
+                        <div>
+                            <span class="text-sm text-gray-400 line-through block">R$ 399,00</span>
+                            <span class="text-xl font-bold text-gray-900">R$ 339,15</span>
+                        </div>
+                        <button onclick="addToCart('Teclado Mecânico')" class="add-to-cart-btn bg-indigo-600 text-white p-2 rounded-full hover:bg-indigo-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow duration-300 flex flex-col group">
+                <div class="relative w-full h-48 bg-gray-200 overflow-hidden">
+                    <img src="https://placehold.co/400x300/f3f4f6/4b5563?text=Mouse+Gamer" alt="Mouse Gamer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="p-5 flex-grow flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-1">Mouse Gamer 16K DPI</h3>
+                        <p class="text-sm text-gray-500 mb-4 line-clamp-2">Sensor óptico de alta precisão, 8 botões programáveis e peso ajustável.</p>
+                    </div>
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="text-xl font-bold text-gray-900">R$ 249,00</span>
+                        <button onclick="addToCart('Mouse Gamer')" class="add-to-cart-btn bg-indigo-600 text-white p-2 rounded-full hover:bg-indigo-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+                <div class="flex items-center mb-4">
+                    <svg class="h-6 w-6 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    <span class="ml-2 text-lg font-bold text-white">Achadinhos de Boa</span>
+                </div>
+                <p class="text-gray-400 text-sm">
+                    A sua melhor escolha para tecnologia de ponta. Inovação e qualidade entregues na sua porta.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Links Rápidos</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-white transition-colors">Sobre Nós</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Política de Privacidade</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Termos de Serviço</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+                <p class="text-sm text-gray-400 mb-4">Receba ofertas exclusivas no seu email.</p>
+                <div class="flex">
+                    <input type="email" placeholder="Seu email" class="px-4 py-2 w-full rounded-l-md text-gray-900 focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                    <button class="bg-indigo-600 px-4 py-2 rounded-r-md hover:bg-indigo-700 transition-colors">Assinar</button>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-800 pt-8 text-center text-sm text-gray-500">
+            &copy; 2026 Achadinhos de Boa. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-4 right-4 z-50 flex flex-col gap-2"></div>
+
+    <!-- JavaScript -->
+    <script>
+        // Inicializar contador do carrinho
+        let cartItemCount = 0;
+        const cartCounterElement = document.getElementById('cart-counter');
+        const toastContainer = document.getElementById('toast-container');
+
+        // Função para atualizar a badge do carrinho
+        function updateCartCounter() {
+            cartCounterElement.textContent = cartItemCount;
+            
+            // Animação leve ao atualizar
+            cartCounterElement.classList.add('scale-125');
+            setTimeout(() => {
+                cartCounterElement.classList.remove('scale-125');
+                cartCounterElement.classList.add('transition-transform', 'duration-300');
+            }, 150);
+        }
+
+        // Função disparada pelos botões de "Adicionar"
+        function addToCart(productName) {
+            cartItemCount++;
+            updateCartCounter();
+            showToast(`${productName} adicionado ao carrinho!`);
+        }
+
+        // Sistema personalizado de alertas (Substitui o alert() padrão)
+        function showToast(message) {
+            const toast = document.createElement('div');
+            
+            // Estilizando o toast com Tailwind
+            toast.className = 'bg-gray-800 text-white px-6 py-3 rounded-lg shadow-lg flex items-center space-x-3 toast-enter';
+            toast.innerHTML = `
+                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>${message}</span>
+            `;
+            
+            toastContainer.appendChild(toast);
+            
+            // Trigger animation
+            setTimeout(() => {
+                toast.classList.remove('toast-enter');
+                toast.classList.add('toast-enter-active');
+            }, 10);
+
+            // Remover toast após 3 segundos
+            setTimeout(() => {
+                toast.classList.remove('toast-enter-active');
+                toast.classList.add('toast-exit-active');
+                
+                // Limpar do DOM após a animação de saída
+                setTimeout(() => {
+                    if (toastContainer.contains(toast)) {
+                        toastContainer.removeChild(toast);
+                    }
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
